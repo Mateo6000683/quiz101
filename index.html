@@ -30,26 +30,19 @@
 function vertices (lado,Altura){
     lado=byId(width)
     Altura=byId(height)
+
     return[
         [0,0,0],
         [lado,0,0],
         [lado,0,lado],
         [0,0,lado],
-        [lado,Altura,lado]
+        [vt[0],Altura,vt[0]]
     ];
-}
-function imprimir(){
 
-    alert(vertices());
+    alert(lado);
+    alert(altura);
 }
-function matrizTraslacion(tx, ty, tz) {
-    return [
-        [1, 0, 0, tx],
-        [0, 1, 0, ty],
-        [0, 0, 1, tz],
-        [0, 0, 0, 1]
-    ];
-}
+
 function multiplicarMatrizVector(matriz, vector) {
     var resultado = [];
     for (var i = 0; i < matriz.length; i++) {
@@ -61,14 +54,14 @@ function multiplicarMatrizVector(matriz, vector) {
     }
     return resultado;
 }
-function translacion piramide (matrVert,vt){
+function translacionpiramide (matrVert,vt){
     var vo = strarr2num(byId("vt"), ",");
 
-    var matrizTrasl = matrizTraslacion(tx, ty, tz);
+    var matrVert= vertices( lado,Altura);
     vo.push(1);
-    var resultado = multiplicarMatrizVector(matrizTrasl, vo);
-
-    document.getElementById("vr_tr").value = resultado.slice(0, 3).join(", ");
+    var resultado = multiplicarMatrizVector(matrVert, vt);
+    document.getElementById("vert_end").value = resultado.slice(0, 3).join(", ");
+    
 }
     </script>
    
@@ -84,11 +77,11 @@ function translacion piramide (matrVert,vt){
         <span size="30"  style="color: rgb(231, 22, 221);" > Vector Translacion </span>
         <input id="vt" size="30">
     </p>
-    <button size="25" style="color: brown;" onclick=""> Ejecutar translacion </button>
+    <button size="25" style="color: brown;" onclick="translacionpiramide()"> Ejecutar translacion </button>
     <hr/>
 
     <p>
-        <span size="30"style="color: rgb(231, 22, 221);" onclick="imprimir()"> <b> Vertices Posicion inicial</b> </span>
+        <span size="30"style="color: rgb(231, 22, 221);" onclick="vertices()"> <b> Vertices Posicion inicial</b> </span>
         <input id="vert_ini" size="30">
 
     </p>
