@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Actividad en clase</title>
+    <h1 style="color :blue";> Translacion de una piramide </h1>
+        <style>
+            body{
+                background-color: black;
+            }
+        </style>
+<hr/>
+</head>
+<body>
+    <script src="b.js">
+        function matrizTraslacion(tx, ty, tz) {
+    return [
+        [1, 0, 0, tx],
+        [0, 1, 0, ty],
+        [0, 0, 1, tz],
+        [0, 0, 0, 1]
+    ];
+}
+function vertices (lado,Altura){
+    return[
+        [0,0,0],
+        [lado,0,0],
+        [lado,0,lado],
+        [0,0,lado],
+        [lado,]
+    ]
+}
+    </script>
+    <p>
+        <span  size="30"  style="color: rgb(231, 22, 221);" > Lado base </span>
+        <input id="lb" size="30">
+    </p>
+    <p>
+   <span size="30"  style="color: rgb(231, 22, 221);" >Altura </span>
+   <input id="Al" size="30">
+    </p>
+    <p>
+        <span size="30"  style="color: rgb(231, 22, 221);" > Vector Translacion </span>
+        <input id="vt" size="30">
+    </p>
+    <button size="25" style="color: brown;"> Ejecutar translacion </button>
+    <hr/>
+
+    <p>
+        <span size="30"style="color: rgb(231, 22, 221);"> <b> Vertices Posicion inicial</b> </span>
+        <input id="pi" size="30">
+
+    </p>
+
+    <p>
+        <span size="30"style="color: rgb(231, 22, 221);"> <b> Vertices Posicion final  </b> </span>
+        <input id="pf" size="30">
+
+    </p>
+
+</body>
+</html>
