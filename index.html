@@ -13,7 +13,36 @@
 </head>
 <body>
     <script src="b.js">
-        function matrizTraslacion(tx, ty, tz) {
+    function byId(id) 
+    {
+    return document.getElementById(id).value;
+    }
+
+    function strarr2num(arreglo, lim) {
+    var arrs = arreglo.split(lim);
+    arrn = [];
+    arrs.forEach((elem) => {
+        arrn.push(Number(elem));
+    });
+    return arrn;
+}
+
+function vertices (lado,Altura){
+    lado=byId(width)
+    Altura=byId(height)
+    return[
+        [0,0,0],
+        [lado,0,0],
+        [lado,0,lado],
+        [0,0,lado],
+        [lado,Altura,lado]
+    ];
+}
+function imprimir(){
+
+    alert(vertices());
+}
+function matrizTraslacion(tx, ty, tz) {
     return [
         [1, 0, 0, tx],
         [0, 1, 0, ty],
@@ -21,40 +50,52 @@
         [0, 0, 0, 1]
     ];
 }
-function vertices (lado,Altura){
-    return[
-        [0,0,0],
-        [lado,0,0],
-        [lado,0,lado],
-        [0,0,lado],
-        [lado,]
-    ]
+function multiplicarMatrizVector(matriz, vector) {
+    var resultado = [];
+    for (var i = 0; i < matriz.length; i++) {
+        var sum = 0;
+        for (var j = 0; j < vector.length; j++) {
+            sum += matriz[i][j] * vector[j];
+        }
+        resultado.push(sum);
+    }
+    return resultado;
+}
+function translacion piramide (matrVert,vt){
+    var vo = strarr2num(byId("vt"), ",");
+
+    var matrizTrasl = matrizTraslacion(tx, ty, tz);
+    vo.push(1);
+    var resultado = multiplicarMatrizVector(matrizTrasl, vo);
+
+    document.getElementById("vr_tr").value = resultado.slice(0, 3).join(", ");
 }
     </script>
+   
     <p>
         <span  size="30"  style="color: rgb(231, 22, 221);" > Lado base </span>
-        <input id="lb" size="30">
+        <input id="width" size="30">
     </p>
     <p>
    <span size="30"  style="color: rgb(231, 22, 221);" >Altura </span>
-   <input id="Al" size="30">
+   <input id="height" size="30">
     </p>
     <p>
         <span size="30"  style="color: rgb(231, 22, 221);" > Vector Translacion </span>
         <input id="vt" size="30">
     </p>
-    <button size="25" style="color: brown;"> Ejecutar translacion </button>
+    <button size="25" style="color: brown;" onclick=""> Ejecutar translacion </button>
     <hr/>
 
     <p>
-        <span size="30"style="color: rgb(231, 22, 221);"> <b> Vertices Posicion inicial</b> </span>
-        <input id="pi" size="30">
+        <span size="30"style="color: rgb(231, 22, 221);" onclick="imprimir()"> <b> Vertices Posicion inicial</b> </span>
+        <input id="vert_ini" size="30">
 
     </p>
 
     <p>
         <span size="30"style="color: rgb(231, 22, 221);"> <b> Vertices Posicion final  </b> </span>
-        <input id="pf" size="30">
+        <input id="vert_end" size="30">
 
     </p>
 
